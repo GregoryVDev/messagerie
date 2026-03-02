@@ -1,3 +1,21 @@
+<?php
+
+// Fonction pour filtrer et garder les vrais emails
+function validateEmail($email)
+{
+    return filter_var($email, FILTER_VALIDATE_EMAIL) !== false;
+}
+
+// On vérifie si le formulaire est bien rempli
+if (!empty($_POST)) {
+    if (isset($_POST["pseudo"], $_POST["email"], $_POST["pass"], $_POST["pass2"]) && !empty($_POST["pseudo"]) && !empty($_POST["email"]) && !empty($_POST["pass"]) && !empty($_POST["pass2"])) {
+    }
+}
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -27,12 +45,12 @@
 
             <div class="input-group">
                 <label for="password">Mot de passe</label>
-                <input type="password" name="password" id="password" placeholder="Minimum 8 caractères" required>
+                <input type="password" name="pass" id="password" placeholder="Minimum 8 caractères" required>
             </div>
 
             <div class="input-group">
                 <label for="password_confirm">Confirmer le mot de passe</label>
-                <input type="password" name="password_confirm" id="password_confirm" required>
+                <input type="password" name="pass2" id="password_confirm" required>
             </div>
 
             <button type="submit" class="btn-auth">S'inscrire</button>
