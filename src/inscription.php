@@ -42,6 +42,20 @@ if (!empty($_POST)) {
     }
 }
 
+if (empty($errorMessage)) {
+    $sql = "INSERT INTO users (pseudo, email, pass) VALUES (:pseudo, :email, :pass)";
+    $query = $db->prepare($sql);
+    $query->bindValue(":pseudo", $pseudo);
+    $query->bindValue(":email", $_POST["email"]);
+    $query->bindValue(":pass", $pass);
+    $query->execute();
+
+    header("Location: connexion.php");
+    exit();
+} else {
+    $errorMessage = "Le formulaire est incomplet.";
+}
+
 
 ?>
 
