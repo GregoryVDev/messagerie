@@ -1,5 +1,6 @@
 <?php
 
+require_once("./connect.php");
 // Fonction pour filtrer et garder les vrais emails
 function validateEmail($email)
 {
@@ -67,9 +68,12 @@ if (empty($errorMessage)) {
     <meta charset="UTF-8">
     <title>Inscription</title>
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./templates/header.css">
 </head>
 
 <body>
+
+    <?php include "./template/header.php" ?>
 
     <div class="auth-container">
         <form action="traitement_inscription.php" method="POST" class="auth-form">
