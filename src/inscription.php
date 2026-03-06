@@ -78,7 +78,7 @@ if (!empty($_POST)) {
     <?php include "./templates/header.php" ?>
 
     <div class="auth-container">
-        <form action="traitement_inscription.php" method="POST" class="auth-form">
+        <form action="" method="POST" class="auth-form">
             <h2>Créer un compte</h2>
             <p>C'est rapide et facile.</p>
             <hr>
