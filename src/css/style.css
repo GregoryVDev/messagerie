@@ -10,10 +10,6 @@
 
 body {
     background-color: #f0f2f5;
-    /* Le gris typique Facebook */
-    display: flex;
-    justify-content: center;
-    align-items: center;
     height: 100vh;
 }
 
@@ -22,6 +18,7 @@ body {
     width: 100%;
     max-width: 400px;
     padding: 20px;
+    margin: 100px auto;
 }
 
 /* La carte du formulaire */

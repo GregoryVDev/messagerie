@@ -41,21 +41,23 @@ if (!empty($_POST)) {
             $errorMessage = "Les mots de pass ne correspondent pas.";
         }
     }
+
+    if (empty($errorMessage)) {
+        $sql = "INSERT INTO users (pseudo, email, pass) VALUES (:pseudo, :email, :pass)";
+        $query = $db->prepare($sql);
+        $query->bindValue(":pseudo", $pseudo);
+        $query->bindValue(":email", $_POST["email"]);
+        $query->bindValue(":pass", $pass);
+        $query->execute();
+
+        header("Location: connexion.php");
+        exit();
+    } else {
+        $errorMessage = "Le formulaire est incomplet.";
+    }
 }
 
-if (empty($errorMessage)) {
-    $sql = "INSERT INTO users (pseudo, email, pass) VALUES (:pseudo, :email, :pass)";
-    $query = $db->prepare($sql);
-    $query->bindValue(":pseudo", $pseudo);
-    $query->bindValue(":email", $_POST["email"]);
-    $query->bindValue(":pass", $pass);
-    $query->execute();
 
-    header("Location: connexion.php");
-    exit();
-} else {
-    $errorMessage = "Le formulaire est incomplet.";
-}
 
 
 ?>
@@ -73,7 +75,7 @@ if (empty($errorMessage)) {
 
 <body>
 
-    <?php include "./template/header.php" ?>
+    <?php include "./templates/header.php" ?>
 
     <div class="auth-container">
         <form action="traitement_inscription.php" method="POST" class="auth-form">
@@ -83,12 +85,16 @@ if (empty($errorMessage)) {
 
             <div class="input-group">
                 <label for="pseudo">Pseudo</label>
-                <input type="text" name="pseudo" id="pseudo" placeholder="Votre pseudo" required>
+                <input type="text" name="pseudo" id="pseudo"
+                    value="<?= isset($_POST['pseudo']) ? htmlspecialchars($_POST['pseudo']) : '' ?>"
+                    placeholder="Votre pseudo" required>
             </div>
 
             <div class="input-group">
                 <label for="email">Adresse e-mail</label>
-                <input type="email" name="email" id="email" placeholder="nom@exemple.com" required>
+                <input type="email" name="email" id="email"
+                    value="<?= isset($_POST["email"]) ? htmlspecialchars($_POST["email"]) : '' ?>"
+                    placeholder="nom@exemple.com" required>
             </div>
 
             <div class="input-group">

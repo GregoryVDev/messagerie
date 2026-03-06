@@ -1,6 +1,6 @@
 <nav class="navbar">
     <div class="nav-container">
-        <a href="index.php" class="nav-logo">MiniFB</a>
+        <a href="index.php" class="nav-logo">Messagerie</a>
 
         <ul class="nav-links">
             <?php if (isset($_SESSION['user_id'])): ?>
