@@ -1,4 +1,5 @@
 <?php
+
 if (!empty($_POST)) {
 
     // Vérifie si les champs sont remplis
@@ -35,19 +36,14 @@ if (!empty($_POST)) {
     }
 }
 
+include "./templates/header.php";
+
 
 ?>
 
-<!DOCTYPE html>
-<html lang="fr">
-
-<head>
-    <meta charset="UTF-8">
-    <title>Connexion</title>
-    <link rel="stylesheet" href="./css/style.css">
-</head>
-
 <body>
+
+
 
     <div class="auth-container">
         <form action="" method="POST" class="auth-form">

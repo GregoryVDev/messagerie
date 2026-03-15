@@ -117,3 +117,310 @@ hr {
     font-size: 14px;
     text-align: center;
 }
+
+/* INDEX PAGE */
+
+:root {
+    --fb-blue: #1877f2;
+    --fb-bg: #f0f2f5;
+    --fb-white: #ffffff;
+    --fb-gray: #65676b;
+    --fb-border: #dddfe2;
+    --fb-hover: #f2f2f2;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: var(--fb-bg);
+    color: #1c1e21;
+}
+
+/* --- L'EFFET DE FLOU --- */
+.page-blur {
+    filter: blur(8px);
+    /* Intensité du flou */
+    pointer-events: none;
+    /* Empêche de cliquer sur les éléments floutés */
+    user-select: none;
+    /* Empêche de sélectionner le texte */
+    transition: filter 0.3s ease;
+}
+
+/* --- LE FOND NOIR SEMI-TRANSPARENT --- */
+.auth-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    /* Fond sombre */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    /* Toujours au premier plan */
+}
+
+/* --- LE POP-UP (LA MODALE) --- */
+.auth-modal {
+    background: #fff;
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    animation: fadeInScale 0.4s ease-out;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.auth-modal h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #1c1e21;
+}
+
+.auth-modal p {
+    color: #65676b;
+    margin-bottom: 30px;
+    line-height: 1.4;
+}
+
+/* --- LES BOUTONS DU POP-UP --- */
+.modal-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 12px;
+}
+
+.btn-login,
+.btn-register {
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 6px;
+    transition: 0.2s;
+}
+
+.btn-login {
+    background-color: #1877f2;
+    color: white;
+}
+
+.btn-login:hover {
+    background-color: #166fe5;
+}
+
+.btn-register {
+    background-color: #42b72a;
+    color: white;
+}
+
+.btn-register:hover {
+    background-color: #36a420;
+}
+
+.container {
+    width: 95%;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 20px;
+}
+
+/* --- Communs --- */
+.card {
+    background: var(--fb-white);
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.avatar-sm {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.avatar-lg {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 4px solid white;
+}
+
+/* --- Sidebar --- */
+.profile-widget {
+    text-align: center;
+    overflow: hidden;
+}
+
+.profile-widget .banner {
+    height: 70px;
+    background: linear-gradient(to right, #1877f2, #00c6ff);
+}
+
+.profile-widget .profile-content {
+    margin-top: -40px;
+    padding: 15px;
+}
+
+.profile-stats {
+    display: flex;
+    border-top: 1px solid var(--fb-border);
+    padding: 15px 0;
+}
+
+.profile-stats .stat {
+    flex: 1;
+    font-size: 13px;
+    color: var(--fb-gray);
+}
+
+.profile-stats .stat span {
+    display: block;
+    font-weight: bold;
+    color: #000;
+}
+
+/* --- Créateur de Post --- */
+.post-creator {
+    padding: 15px;
+}
+
+.creator-header {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.post-creator textarea {
+    flex: 1;
+    border: none;
+    background: var(--fb-bg);
+    border-radius: 20px;
+    padding: 12px 15px;
+    resize: none;
+    outline: none;
+    font-size: 15px;
+}
+
+.creator-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--fb-border);
+    padding-top: 10px;
+}
+
+.action-btn {
+    background: none;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--fb-gray);
+}
+
+.action-btn:hover {
+    background: var(--fb-hover);
+}
+
+.btn-primary {
+    background: var(--fb-blue);
+    color: white;
+    border: none;
+    padding: 8px 25px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* --- Le Post --- */
+.post-header {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+}
+
+.post-info {
+    flex: 1;
+    margin-left: 10px;
+}
+
+.post-info h4 {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.post-info span {
+    font-size: 12px;
+    color: var(--fb-gray);
+}
+
+.btn-more {
+    background: none;
+    border: none;
+    color: var(--fb-gray);
+    cursor: pointer;
+}
+
+.post-body {
+    padding: 0 15px 15px;
+    font-size: 15px;
+    line-height: 1.4;
+}
+
+.post-footer {
+    display: flex;
+    border-top: 1px solid var(--fb-border);
+    padding: 4px;
+}
+
+.footer-btn {
+    flex: 1;
+    background: none;
+    border: none;
+    padding: 10px;
+    color: var(--fb-gray);
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.footer-btn:hover {
+    background: var(--fb-hover);
+}
+
+/* --- Responsive --- */
+@media (max-width: 850px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        display: none;
+    }
+}
